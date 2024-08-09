@@ -1,0 +1,125 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>計算アプリ</title>
+    <script>
+        async function calculate() {
+            // テキストボックスから値を取得
+            const number = document.getElementById('number').value;
+
+            // リクエストを送信
+            const response = await fetch('/calculate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({ 'number': number }),
+            });
+
+            // レスポンスを取得
+            const data = await response.json();
+
+            // 結果を表示
+            const resultElement = document.getElementById('result');
+            if (data.results && Array.isArray(data.results)) {
+                resultElement.innerHTML = '結果: ' + data.results.join(', ');
+            } else {
+                resultElement.innerText = '結果: ' + (data.results || 'No results');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>計算アプリ</h1>
+    <input type="text" id="number" placeholder="数字を入力">
+    <button onclick="calculate()">計算</button>
+    <p id="result"></p>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>計算アプリ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        @media (max-width: 600px) {
+            input[type="text"], button {
+                width: 90%;
+                font-size: 14px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>計算アプリ</h1>
+    <input type="text" id="number" placeholder="数字を入力">
+    <button onclick="calculate()">計算</button>
+    <p id="result"></p>
+    <script>
+        async function calculate() {
+            // テキストボックスから値を取得
+            const number = document.getElementById('number').value;
+
+            // リクエストを送信
+            const response = await fetch('/calculate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({ 'number': number }),
+            });
+
+            // レスポンスを取得
+            const data = await response.json();
+
+            // 結果を表示
+            const resultElement = document.getElementById('result');
+            if (data.results && Array.isArray(data.results)) {
+                resultElement.innerHTML = '結果: ' + data.results.join(', ');
+            } else {
+                resultElement.innerText = '結果: ' + (data.results || 'No results');
+            }
+        }
+    </script>
+</body>
+</html>
+
